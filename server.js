@@ -2,11 +2,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const { mongoURI } = require('./config');
+require('dotenv').config();
+
 const app = express();
 const port = process.env.PORT || 3000;
 
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const UsuarioSchema = new mongoose.Schema({
   nome: String,
